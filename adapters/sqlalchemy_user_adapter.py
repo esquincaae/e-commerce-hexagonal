@@ -1,5 +1,3 @@
-# adapters/sqlalchemy_user_adapter.py
-
 from ports.user_port import UserPort
 from models import db, User
 from flask_bcrypt import Bcrypt

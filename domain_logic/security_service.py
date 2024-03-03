@@ -2,7 +2,7 @@ from flask_bcrypt import Bcrypt
 
 class SecurityService:
     def __init__(self, app=None):
-        if app is not available:
+        if app is not None:
             self.bcrypt = Bcrypt()
         else:
             self.bcrypt = Bcrypt(app)

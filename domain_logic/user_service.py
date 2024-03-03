@@ -1,5 +1,7 @@
+from . import security_service
+
 class UserService:
-    def __init__(self, user_adapter):
+    def __init__(self, user_adapter, security_service):
         self.user_adapter = user_adapter
 
     def create_user(self, user_data):

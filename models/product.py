@@ -1,4 +1,4 @@
-from infrastructure.db import db
+from . import db
 
 class Product(db.Model):
     __tablename__ = 'products'

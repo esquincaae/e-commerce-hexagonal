@@ -21,10 +21,10 @@ app.config.from_object(config.Config)
 # Inicialización de la base de datos y los servicios
 init_app(app)
 security_service = SecurityService(app)
-user_adapter = SQLAlchemyUserAdapter()
+user_adapter = SQLAlchemyUserAdapter(app)
 product_adapter = SQLAlchemyProductAdapter()
 order_adapter = SQLAlchemyOrderAdapter()
-paypal_adapter = PayPalAdapter(app.config['CLIENT_ID'], app.config['CLIENT_SECRET'])
+paypal_adapter = PayPalAdapter(app.config['PAYPAL_CLIENT_ID'], app.config['PAYPAL_CLIENT_SECRET'])
 
 user_service = UserService(user_adapter, security_service)
 product_service = ProductService(product_adapter)
