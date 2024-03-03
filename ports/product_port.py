@@ -1,5 +1,3 @@
-# ports/product_port.py
-
 from abc import ABC, abstractmethod
 
 class ProductPort(ABC):

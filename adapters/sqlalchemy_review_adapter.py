@@ -1,5 +1,3 @@
-# adapters/sqlalchemy_review_adapter.py
-
 from ports.review_port import ReviewPort
 from models import db, Review
 

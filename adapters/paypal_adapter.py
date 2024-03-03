@@ -1,5 +1,3 @@
-# adapters/paypal_adapter.py
-
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersCreateRequest
 from ports.payment_port import PaymentPort

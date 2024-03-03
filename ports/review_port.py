@@ -1,4 +1,3 @@
-# ports/review_port.py
 from abc import ABC, abstractmethod
 
 class ReviewPort(ABC):

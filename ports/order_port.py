@@ -1,5 +1,3 @@
-# ports/order_port.py
-
 from abc import ABC, abstractmethod
 
 class OrderPort(ABC):

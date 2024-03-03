@@ -8,15 +8,15 @@ from adapters.sqlalchemy_user_adapter import SQLAlchemyUserAdapter
 from adapters.sqlalchemy_product_adapter import SQLAlchemyProductAdapter
 from adapters.sqlalchemy_order_adapter import SQLAlchemyOrderAdapter
 from adapters.paypal_adapter import PayPalAdapter
-from infrastructure.db import db, init_app
+from infrastructure.database import init_app
 import config
+
+app = Flask(__name__)
+app.config.from_object(config.Config)
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-app = Flask(__name__)
-app.config.from_object(config.Config)
 
 # Inicialización de la base de datos y los servicios
 init_app(app)

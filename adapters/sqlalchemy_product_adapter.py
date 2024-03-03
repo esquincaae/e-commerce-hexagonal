@@ -1,7 +1,5 @@
-# adapters/sqlalchemy_product_adapter.py
-
 from ports.product_port import ProductPort
-from models import db, Product  # Suponiendo que models contiene tus modelos SQLAlchemy
+from models import db, Product
 
 class SQLAlchemyProductAdapter(ProductPort):
 

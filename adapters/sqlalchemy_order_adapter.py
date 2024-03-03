@@ -1,5 +1,3 @@
-# adapters/sqlalchemy_order_adapter.py
-
 from ports.order_port import OrderPort
 from models import db, Order, OrderProduct
 

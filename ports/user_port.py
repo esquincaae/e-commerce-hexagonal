@@ -1,5 +1,3 @@
-# ports/user_port.py
-
 from abc import ABC, abstractmethod
 
 class UserPort(ABC):
