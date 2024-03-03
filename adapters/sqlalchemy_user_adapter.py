@@ -14,7 +14,9 @@ class SQLAlchemyUserAdapter(UserPort):
         db.session.commit()
         return user
 
-    def authenticate_user(self, email, password):
+    def authenticate_user(self, user_data):
+        email = user_data.get('email')
+        password = user_data.get('password')
         user = User.query.filter_by(email=email).first()
         if user and self.bcrypt.check_password_hash(user.password, password):
             return user

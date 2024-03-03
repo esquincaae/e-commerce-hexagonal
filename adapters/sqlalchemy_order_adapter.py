@@ -4,15 +4,20 @@ from models import db, Order, OrderProduct
 class SQLAlchemyOrderAdapter(OrderPort):
 
     def add_order(self, order_data, products):
-        new_order = Order(**order_data)
-        db.session.add(new_order)
+        order2 = order_data
+        order_data.pop("order_products", None)
+        new_order = Order(**order2)
+        db.session.add(order_data)
+        print("se añadio a la db")
         db.session.commit()
-
-        for product_id in products:
-            order_product = OrderProduct(product_id=product_id, order_id=new_order.id)
+        for id in products:
+            print("si entra")
+            order_product = OrderProduct(product_id=id, order_id=new_order.id)
             db.session.add(order_product)
+        print("ya salio")
         db.session.commit()
-        return new_order
+        print("ya se fue")
+        return order_data
 
     def update_order(self, order_id, status):
         order = Order.query.get(order_id)

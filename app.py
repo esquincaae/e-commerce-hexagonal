@@ -38,16 +38,22 @@ def hello_world():
 def register():
     user_data = request.get_json()
     user = user_service.create_user(user_data)
-    return jsonify(user), 201
+    return jsonify(user.to_dict()), 201
 
 @app.route('/login', methods=['POST'])
 def login():
     user_data = request.get_json()
     user = user_service.authenticate_user(user_data)
     if user:
-        return jsonify(user), 200
+        return jsonify(user.to_dict()), 200
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
+    
+@app.route('/addproduct', methods=['POST'])
+def add_product():
+    product_data = request.get_json()
+    new_product = product_service.add_product(product_data)
+    return jsonify(new_product.to_dict()), 201
 
 @app.route('/products', methods=['GET'])
 def list_products():
@@ -57,15 +63,17 @@ def list_products():
 @app.route('/orders', methods=['POST'])
 def create_order():
     order_data = request.get_json()
-    order = order_service.create_order(order_data)
-    return jsonify(order), 201
+    products = order_data.get('order_products',[])
+    order = order_service.create_order(order_data, products)
+    print("create_order en app.py")
+    return jsonify(order.to_dict()), 201
 
 @app.route('/create-paypal-order', methods=['POST'])
 def create_paypal_order():
     data = request.get_json()
     order_id = paypal_adapter.create_order(data['amount'], data.get('currency', 'USD'))
     if order_id:
-        return jsonify({'order_id': order_id}), 200
+        return jsonify({'order_id': order_id.to_dict()}), 200
     else:
         logger.error('Error creating PayPal order')
         return jsonify({'error': 'There was an error creating the PayPal order'}), 500

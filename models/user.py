@@ -12,3 +12,11 @@ class User(db.Model):
     seller_orders = db.relationship('Order', foreign_keys='Order.seller_id',
                                     backref='seller', lazy=True)
     reviews = db.relationship('Review', backref='user', lazy=True)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'password': self.password
+        }

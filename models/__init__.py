@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from infrastructure.database import db
 
 from .user import User 
 from .review import Review
